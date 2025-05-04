@@ -1,5 +1,5 @@
 //
-//  ZFPlayer.h
+//  ZFIJKPlayerManager.h
 //  ZFPlayer
 //
 // Copyright (c) 2016年 任子丰 ( http://github.com/renzifeng )
@@ -23,36 +23,23 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-
-//! Project version number for ZFPlayer.
-FOUNDATION_EXPORT double ZFPlayerVersionNumber;
-
-//! Project version string for ZFPlayer.
-FOUNDATION_EXPORT const unsigned char ZFPlayerVersionString[];
-
-// Core
-#import "ZFPlayerController.h"
-#import "ZFPlayerMediaControl.h"
+#if __has_include(<ZFPlayer/ZFPlayerMediaPlayback.h>)
+#import <ZFPlayer/ZFPlayerMediaPlayback.h>
+#else
 #import "ZFPlayerMediaPlayback.h"
-#import "ZFKVOController.h"
-#import "UIScrollView+ZFPlayer.h"
-#import "ZFPlayerLogManager.h"
-#import "ZFPlayerConst.h"
-#import "ZFPlayerGestureControl.h"
-#import "ZFOrientationObserver.h"
-#import "ZFPlayerNotification.h"
-#import "ZFLandscapeViewController.h"
-#import "ZFPlayerView.h"
+#endif
 
-// AVPlayer
-#import "ZFAVPlayerManager.h"
+#if __has_include(<IJKMediaFramework/IJKMediaFramework.h>)
+#import <IJKMediaFramework/IJKMediaFramework.h>
 
-// IJKPlayer
-#import "ZFIJKPlayerManager.h"
+@interface ZFIJKPlayerManager : NSObject <ZFPlayerMediaPlayback>
 
-// ControlView
-#import "ZFPlayerControlView.h"
-#import "ZFLandScapeControlView.h"
-#import "ZFPortraitControlView.h"
-#import "ZFSpeedLoadingView.h"
-#import "ZFLoadingView.h"
+@property (nonatomic, strong, readonly) IJKFFMoviePlayerController *player;
+
+@property (nonatomic, strong, readonly) IJKFFOptions *options;
+
+@property (nonatomic, assign) NSTimeInterval timeRefreshInterval;
+
+@end
+
+#endif

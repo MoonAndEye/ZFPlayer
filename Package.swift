@@ -20,7 +20,6 @@ let package = Package(
             dependencies: [],
             path: "Sources/ZFPlayer",
             exclude: [
-                "Classes/ijkplayer"
             ],
             resources: [
                 .process("Classes/ControlView/ZFPlayer.bundle")
@@ -29,7 +28,8 @@ let package = Package(
             cSettings: [
                 .headerSearchPath("Classes/Core"),
                 .headerSearchPath("Classes/AVPlayer"),
-                .headerSearchPath("Classes/ControlView")
+                .headerSearchPath("Classes/ControlView"),
+                .headerSearchPath("Classes/ijkplayer")
             ]
         )
     ]
